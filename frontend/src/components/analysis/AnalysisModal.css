@@ -1,0 +1,212 @@
+.analysis-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--overlay);
+  display: grid;
+  place-items: center;
+  z-index: 110;
+  padding: 16px;
+}
+
+.analysis-modal {
+  width: min(100%, 1080px);
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.analysis-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.analysis-kicker {
+  margin: 0 0 4px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+.analysis-header h3 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.analysis-subtitle {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+}
+
+.analysis-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.analysis-timer,
+.analysis-timer-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.analysis-body {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 16px;
+}
+
+.analysis-steps-panel,
+.analysis-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.analysis-steps-panel h4,
+.analysis-card h4 {
+  margin: 0 0 12px;
+}
+
+.analysis-steps {
+  display: grid;
+  gap: 10px;
+}
+
+.analysis-step {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.analysis-step.active {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.analysis-step.done {
+  border-color: var(--success);
+}
+
+.analysis-step-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.analysis-step.done .analysis-step-icon {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.analysis-step p,
+.analysis-card p,
+.analysis-hint {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.analysis-step-status {
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.analysis-result-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.decision-card.toxic {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.decision-card.safe {
+  border-color: var(--success);
+  background: var(--success-soft);
+}
+
+.analysis-decision-percent {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.analysis-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.summary-card ul {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.summary-card li {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.error-card {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.analysis-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.analysis-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.analysis-actions .primary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .analysis-body {
+    grid-template-columns: 1fr;
+  }
+
+  .analysis-header {
+    flex-direction: column;
+  }
+}

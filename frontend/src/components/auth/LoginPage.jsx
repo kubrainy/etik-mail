@@ -1,16 +1,18 @@
+import { useState } from "react";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import Icon from "../common/Icon.jsx";
 import "./LoginPage.css";
 
 export default function LoginPage() {
-  const { login, error } = useAuth();
+  const { login, error, loading } = useAuth();
   const { theme, toggleTheme } = useTheme();
+  const [smtpHint] = useState(true);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    login(formData.get("email"), formData.get("password"));
+    await login(formData.get("email"), formData.get("password"));
   };
 
   return (
@@ -29,7 +31,7 @@ export default function LoginPage() {
           <img src="/favicon.png" alt="Etik Mail" className="login-logo" />
           <div>
             <h1>Etik Mail</h1>
-            <p>E-posta göndermeden önce etik kontrol</p>
+            <p>Giriş yap, etik analizden geçir, gerçek mail gönder</p>
           </div>
         </div>
 
@@ -39,7 +41,7 @@ export default function LoginPage() {
             <input
               name="email"
               type="email"
-              placeholder="ornek@example.com"
+              placeholder="ornek@gmail.com"
               defaultValue="sezi@example.com"
               required
             />
@@ -58,17 +60,22 @@ export default function LoginPage() {
 
           {error ? <p className="login-error">{error}</p> : null}
 
-          <button type="submit" className="primary-button login-submit">
-            Giriş yap
+          <button type="submit" className="primary-button login-submit" disabled={loading}>
+            {loading ? "Giriş yapılıyor..." : "Giriş yap"}
           </button>
         </form>
 
         <div className="login-demo-users">
-          <p>Demo kullanıcılar</p>
+          <p>Varsayılan hesaplar (backend/.env ile değiştirilebilir)</p>
           <ul>
             <li>sezi@example.com / etik2026</li>
             <li>kubra@example.com / etik2026</li>
           </ul>
+          {smtpHint ? (
+            <p className="login-smtp-note">
+              Gerçek mail gönderimi için backend/.env dosyasına Gmail veya SendGrid SMTP bilgilerini ekleyin.
+            </p>
+          ) : null}
         </div>
       </div>
     </div>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import Icon from "../common/Icon.jsx";
@@ -7,7 +6,6 @@ import "./LoginPage.css";
 export default function LoginPage() {
   const { login, error, loading } = useAuth();
   const { theme, toggleTheme } = useTheme();
-  const [smtpHint] = useState(true);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -42,7 +40,7 @@ export default function LoginPage() {
               name="email"
               type="email"
               placeholder="ornek@gmail.com"
-              defaultValue="sezi@example.com"
+              defaultValue="kubra@example.com"
               required
             />
           </label>
@@ -64,19 +62,6 @@ export default function LoginPage() {
             {loading ? "Giriş yapılıyor..." : "Giriş yap"}
           </button>
         </form>
-
-        <div className="login-demo-users">
-          <p>Varsayılan hesaplar (backend/.env ile değiştirilebilir)</p>
-          <ul>
-            <li>sezi@example.com / etik2026</li>
-            <li>kubra@example.com / etik2026</li>
-          </ul>
-          {smtpHint ? (
-            <p className="login-smtp-note">
-              Gerçek mail gönderimi için backend/.env dosyasına Gmail veya SendGrid SMTP bilgilerini ekleyin.
-            </p>
-          ) : null}
-        </div>
       </div>
     </div>
   );

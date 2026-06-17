@@ -4,7 +4,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from model_service import load_model, predict_mail
+from model_service import load_model, model, predict_mail, tokenizer
 
 
 @asynccontextmanager
@@ -40,9 +40,24 @@ class PredictResponse(BaseModel):
     reason: str
 
 
+@app.get("/")
+def root():
+    return {
+        "service": "etik-mail-api",
+        "status": "ok",
+        "health": "/health",
+        "docs": "/docs",
+        "predict": "/predict",
+    }
+
+
 @app.get("/health")
 def health():
-    return {"status": "ok", "service": "etik-mail-api"}
+    return {
+        "status": "ok",
+        "service": "etik-mail-api",
+        "model_loaded": model is not None and tokenizer is not None,
+    }
 
 
 @app.post("/predict", response_model=PredictResponse)

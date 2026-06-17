@@ -4,7 +4,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from model_service import load_model, model, predict_mail, tokenizer
+import model_service
+from model_service import load_model, predict_mail
 
 
 @asynccontextmanager
@@ -56,7 +57,8 @@ def health():
     return {
         "status": "ok",
         "service": "etik-mail-api",
-        "model_loaded": model is not None and tokenizer is not None,
+        "model_loaded": model_service.model is not None
+        and model_service.tokenizer is not None,
     }
 
 

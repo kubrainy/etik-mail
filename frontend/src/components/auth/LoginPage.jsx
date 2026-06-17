@@ -29,7 +29,7 @@ export default function LoginPage() {
           <img src="/favicon.png" alt="Etik Mail" className="login-logo" />
           <div>
             <h1>Etik Mail</h1>
-            <p>Giriş yap, etik analizden geçir, gerçek mail gönder</p>
+            <p>Giriş yap, etik analizden geçir, etik mail gönder</p>
           </div>
         </div>
 

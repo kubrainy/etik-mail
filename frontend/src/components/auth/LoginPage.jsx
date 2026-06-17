@@ -1,5 +1,6 @@
 import { useAuth } from "../../context/AuthContext.jsx";
 import { useTheme } from "../../context/ThemeContext.jsx";
+import { USERS } from "../../data/users.js";
 import Icon from "../common/Icon.jsx";
 import "./LoginPage.css";
 
@@ -62,6 +63,17 @@ export default function LoginPage() {
             {loading ? "Giriş yapılıyor..." : "Giriş yap"}
           </button>
         </form>
+
+        <div className="login-demo-users">
+          <p>Demo hesaplar</p>
+          <ul>
+            {USERS.map((user) => (
+              <li key={user.email}>
+                {user.name} — {user.email} / {user.password}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

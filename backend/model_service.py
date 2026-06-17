@@ -1,23 +1,29 @@
+import os
 from pathlib import Path
 
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 MODEL_DIR = Path(__file__).resolve().parent / "model" / "final-toxic-mail-model"
+HF_MODEL_ID = os.getenv("HF_MODEL_ID", "kubrainy/etik-mail-toxic-model")
 TOXIC_THRESHOLD = 0.6
 
 tokenizer = None
 model = None
 
 
+def _get_model_source():
+    if MODEL_DIR.exists():
+        return str(MODEL_DIR)
+    return HF_MODEL_ID
+
+
 def load_model() -> None:
     global tokenizer, model
 
-    if not MODEL_DIR.exists():
-        raise FileNotFoundError(f"Model klasörü bulunamadı: {MODEL_DIR}")
-
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
-    model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
+    source = _get_model_source()
+    tokenizer = AutoTokenizer.from_pretrained(source)
+    model = AutoModelForSequenceClassification.from_pretrained(source)
     model.eval()
 
 

@@ -85,7 +85,7 @@ export default function AnalysisModal({
                 <h4>Analiz hatası</h4>
                 <p>{error}</p>
                 <p className="analysis-hint">
-                  Backend çalışıyor mu kontrol edin: `uvicorn main:app --reload`
+                  Sunucuya bağlanılamadı. Lütfen backend servisinin çalıştığından emin olun ve tekrar deneyin.
                 </p>
               </div>
             ) : result ? (

@@ -15,6 +15,9 @@ export default async function handler(req, res) {
       headers: {
         "Content-Type": "application/json",
         ...(key ? { "x-api-key": key } : {}),
+        ...(req.headers["x-forwarded-for"]
+          ? { "x-forwarded-for": req.headers["x-forwarded-for"] }
+          : {}),
       },
       body: ["GET", "HEAD"].includes(req.method)
         ? undefined

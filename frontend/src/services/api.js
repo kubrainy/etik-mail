@@ -9,7 +9,13 @@ export async function predictMail(text) {
 
   if (!response.ok) {
     const error = await response.json().catch(() => ({}));
-    throw new Error(error.detail || "Model servisine ulaşılamadı.");
+    const detail = typeof error.detail === "string" ? error.detail : null;
+    throw new Error(
+      detail ||
+        (response.status === 422
+          ? "Mail metni çok uzun veya geçersiz (en fazla 5000 karakter)."
+          : "Model servisine ulaşılamadı."),
+    );
   }
 
   return response.json();

@@ -10,8 +10,23 @@ Türkçe e-posta metinlerinde toksik ve uygunsuz dil tespiti yapan **TÜBİTAK**
 
 ---
 
+## Bağlantılar
+
+| | |
+|---|---|
+| 🌐 Canlı demo | [etikmail.kubrainy.me](https://etikmail.kubrainy.me) |
+| 🎞️ Sunum | [etik-mail-slidev.kubrainy.me](https://etik-mail-slidev.kubrainy.me) |
+| 🤗 Model | [kubrainy/etik-mail-toxic-model](https://huggingface.co/kubrainy/etik-mail-toxic-model) |
+| 📊 Veri seti | [kubrainy/etik-mail-dataset](https://huggingface.co/datasets/kubrainy/etik-mail-dataset) |
+| 💻 Kaynak kod | [kubrainy/etik-mail](https://github.com/kubrainy/etik-mail) |
+
+Çalışma, **IDAP'26** (10th International Artificial Intelligence and Data Processing Symposium) tarafından onaylanmış (kabul edilmiş) ve sunumu İstanbul'da, Marmara Üniversitesi'nde gerçekleştirilmiştir: *Türkçe Kurumsal E-Postalarda Etik Dışı Dil Tespiti* (Kübra Çetinkaya, Sezi Güngörmüş, Şerif Ali Sadık). Makalenin yayın süreci devam etmektedir. TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Destekleme Programı kapsamında desteklenmiştir.
+
+---
+
 ## İçindekiler
 
+- [Bağlantılar](#bağlantılar)
 - [Özellikler](#özellikler)
 - [Teknolojiler](#teknolojiler)
 - [Proje yapısı](#proje-yapısı)

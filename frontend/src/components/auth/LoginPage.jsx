@@ -74,6 +74,17 @@ export default function LoginPage() {
             ))}
           </ul>
         </div>
+
+        <a
+          className="login-owner-badge"
+          href="https://kubrainy.me"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="kubrainy.me web sitesini aç"
+          title="kubrainy.me"
+        >
+          <img src="/kubrainy-logo.png" alt="Kübra Çetinkaya" />
+        </a>
       </div>
     </div>
   );

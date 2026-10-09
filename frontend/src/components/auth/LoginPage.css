@@ -13,7 +13,6 @@
 }
 
 .login-card {
-  position: relative;
   width: min(100%, 420px);
   background: var(--surface);
   border: 1px solid var(--border);
@@ -101,35 +100,44 @@
   font-size: 13px;
 }
 
-/* Kartın sağ alt köşesinde, kenara taşan kubrainy.me logosu */
-.login-owner-badge {
-  position: absolute;
-  right: -14px;
-  bottom: -14px;
-  display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  /* Logo siyah ve şeffaf olduğu için koyu temada da açık zemin gerekir */
-  background: #ffffff;
-  box-shadow: var(--shadow);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+/* Kübra Çetinkaya satırının karşısında, küçük ve soluk kubrainy.me logosu */
+.login-demo-users li.has-owner-logo {
+  position: relative;
+  /* Dar ekranda metin logonun altına girmesin */
+  padding-right: 30px;
 }
 
-.login-owner-badge img {
-  width: 34px;
-  height: 34px;
+.login-owner-logo {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: block;
+  opacity: 0.4;
+  transition: opacity 0.18s ease;
+}
+
+.login-owner-logo img {
+  display: block;
+  /* PNG'nin kenar boşluğu geniş; satır yüksekliği artmasın diye negatif marj */
+  width: 32px;
+  height: 32px;
+  margin: -8px -6px;
   object-fit: contain;
 }
 
-.login-owner-badge:hover,
-.login-owner-badge:focus-visible {
-  transform: translateY(-2px) scale(1.06);
+.login-owner-logo:hover,
+.login-owner-logo:focus-visible {
+  opacity: 0.75;
 }
 
-.login-owner-badge:focus-visible {
+.login-owner-logo:focus-visible {
   outline: 2px solid var(--primary);
-  outline-offset: 2px;
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+/* Logo siyah olduğu için koyu temada açık renge çevrilir */
+[data-theme="dark"] .login-owner-logo img {
+  filter: invert(1);
 }

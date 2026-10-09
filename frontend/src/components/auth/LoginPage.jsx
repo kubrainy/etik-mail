@@ -4,6 +4,8 @@ import { USERS } from "../../data/users.js";
 import Icon from "../common/Icon.jsx";
 import "./LoginPage.css";
 
+const OWNER_EMAIL = "kubra@example.com";
+
 export default function LoginPage() {
   const { login, error, loading } = useAuth();
   const { theme, toggleTheme } = useTheme();
@@ -68,23 +70,24 @@ export default function LoginPage() {
           <p>Demo hesaplar</p>
           <ul>
             {USERS.map((user) => (
-              <li key={user.email}>
+              <li key={user.email} className={user.email === OWNER_EMAIL ? "has-owner-logo" : undefined}>
                 {user.name} — {user.email} / {user.password}
+                {user.email === OWNER_EMAIL ? (
+                  <a
+                    className="login-owner-logo"
+                    href="https://kubrainy.me"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="kubrainy.me web sitesini aç"
+                    title="kubrainy.me"
+                  >
+                    <img src="/kubrainy-logo.png" alt="Kübra Çetinkaya" />
+                  </a>
+                ) : null}
               </li>
             ))}
           </ul>
         </div>
-
-        <a
-          className="login-owner-badge"
-          href="https://kubrainy.me"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="kubrainy.me web sitesini aç"
-          title="kubrainy.me"
-        >
-          <img src="/kubrainy-logo.png" alt="Kübra Çetinkaya" />
-        </a>
       </div>
     </div>
   );
